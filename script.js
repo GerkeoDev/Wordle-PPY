@@ -12,36 +12,36 @@ fetch(UrlApi).then(response => response.json())
         console.log("API:",palabra);
 })
 .catch(err => {
-    console.log("hubo un problema con la API!")
+    console.log("hubo un problema con la API!");
     let diccionario = ["APPLE", "HURLS", "WINGS", "YOUTH", "shott","molds", "chapt", "inane", "edged", "armer", "baton", "clour", "stare", "refix", "gimme", "sikas", "kemps", "thebe", "dusky","hajis", "galax","hated", "reest", "marks", "panga",
     "dinar", "dwarf", "bandy", "willy", "clump", "farci", "might", "bumfs"];
     palabra = diccionario[Math.floor(Math.random() * diccionario.length)].toUpperCase();
     console.log("ERROR:", palabra);
     });
 
-let button = document.getElementById('guess-button')
+let button = document.getElementById('guess-button');
 const INPUT = document.getElementById("guess-input");
 
 
-window.addEventListener('load', init)
-button.addEventListener('click', intentar)
-INPUT.addEventListener('keyup', leerenter)
+window.addEventListener('load', init);
+button.addEventListener('click', intentar);
+INPUT.addEventListener('keyup', leerenter);
 
 
 function init(){
-    console.log('Esto se ejecuta solo cuando se carga la pagina web')
+    console.log('Esto se ejecuta solo cuando se carga la pagina web');
 }
 
 function intentar(){
-    document.getElementById('guesses').innerHTML = ""
+    document.getElementById('guesses').innerHTML = "";
     const INTENTO = leerIntento();
-    console.log(INTENTO)
+    console.log(INTENTO);
     const GRID = document.getElementById("grid");
     const ROW = document.createElement('div');
     ROW.className = 'row';
     if(INTENTO.trim().length !== 5){
         //alert("Solo se permiten palabras de 5 letras")
-        document.getElementById('guesses').innerHTML = "<h1>Solo se permiten palabras de 5 letras</h1>"
+        document.getElementById('guesses').innerHTML = "<h1>Solo se permiten palabras de 5 letras</h1>";
         return
     }
     if(palabra === INTENTO){
@@ -108,4 +108,7 @@ function leerenter(e){
     if (e.key==="Enter"){
         intentar()
     }
+}
+function removeAccents(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
